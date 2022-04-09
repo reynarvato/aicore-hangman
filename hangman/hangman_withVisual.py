@@ -61,6 +61,63 @@ class Hangman:
         print("The mistery word has {} characters".format(self.num_letters))
         print("{}".format(self.word_guessed))
 
+        '''
+        HANGMAN VISUALS:
+        '''
+
+        self.HANGMANPICS = ['''
+        +---+
+        |   |
+            |
+            |
+            |
+            |
+        =========''', '''
+        +---+
+        |   |
+        O   |
+            |
+            |
+            |
+        =========''', '''
+        +---+
+        |   |
+        O   |
+        |   |
+            |
+            |
+        =========''', '''
+        +---+
+        |   |
+        O   |
+       /|   |
+            |
+            |
+        =========''', '''
+        +---+
+        |   |
+        O   |
+       /|\  |
+            |
+            |
+        =========''', '''
+        +---+
+        |   |
+        O   |
+       /|\  |
+       /    |
+            |
+        =========''', '''
+        +---+
+        |   |
+        O   |
+       /|\  |
+       / \  |
+            |
+        =========''']
+        self.hangman_progress = 0
+        self.max_num_lives = num_lives
+
         pass
 
     def check_letter(self, letter) -> None:
@@ -98,6 +155,8 @@ class Hangman:
  
         else:
             self.num_lives += -1
+            print(self.HANGMANPICS[int(len(self.HANGMANPICS)*(1-self.num_lives/self.max_num_lives))-1])
+
             print(f"Your guess {letter} was incorrect. You have {self.num_lives} lives left.")
 
     def ask_letter(self):
